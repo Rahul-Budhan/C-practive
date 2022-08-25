@@ -1,7 +1,7 @@
-#include <bits/stdc++.h>
+#include<iostream>
 using namespace std;
 
-int32_t main(){
+int main(){
     cout<<"Hello World! guys\n";
     int savings;
     cin>>savings;
