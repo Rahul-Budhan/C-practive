@@ -8,20 +8,109 @@ void choose();
 long inputLong();
 int inputInt();
 void err();
+string irrelivent;
 
 void err(){
     cout<<"Error! Try again or Check code"<<endl;
     choose();
 }
-void addBinaryNos(long S,long T){
-
+void addBinaryNos(long int S,long int T){
+    long a=S;
+    long b=T;
+    string bin=" ";
+    long sum1=0,sum2=0;
+    int digit;
+    int count1=0,count2=0;
+    while(a!=0){
+        digit=a%10;
+        a/=10;
+        switch(digit){
+        case 1:
+            sum1+=digit*(pow(2,count1));
+            count1++;
+            break;
+        case 0:
+            count1++;
+            break;
+        default:
+            err();
+            break;}
+    }
+    cout<<"The decimal form for "<<S<<" is: "<<sum1<<endl;
+    while(b!=0){
+        digit=b%10;
+        b/=10;
+        switch(digit){
+        case 1:
+            sum2+=digit*(pow(2,count2));
+            count2++;
+            break;
+        case 0:
+            count2++;
+            break;
+        default:
+            err();
+            break;}
+    }
+    cout<<"The decimal form for "<<T<<" is: "<<sum2<<endl;
+    int finalSum= sum1+sum2;
+    int c= finalSum;
+    while(c!=0){
+        digit=c%2;
+        c/=2;
+        bin=bin.insert(1,to_string(digit));
+    }
+    cout<<"The sum is: "<<finalSum<<" and it's binary representation is: "<<bin<<endl;
+    cin>>irrelivent;
+    choose();
 
 }
-void decToHex(long S){
-    
+void decToHex(long int S){
+    long int number=S;
+    string sum="";
+    int count=0;
+    int digit;
+    sum="";
+    while(number!=0){
+        digit=number%16;
+        number/=16;
+        if(digit>9){
+            switch(digit){
+                case 10:
+                    sum=sum.insert(1,"A");
+                    break;
+                case 11:
+                    sum=sum.insert(1,"B");
+                    break;
+                case 12:
+                    sum=sum.insert(1,"C");
+                    break;
+                case 13:
+                    sum=sum.insert(1,"D");
+                    break;
+                case 14:
+                    sum=sum.insert(1,"E");
+                    break;
+                case 15:
+                    sum= sum.insert(1,"F");
+                    break;
+                default:
+                    err();
+                    break;
+            }
+        }
+        else{
+            sum.insert(1,to_string(digit));
+            // sum=sum.append(to_string(digit*pow(16,count)));
+        }
+        count++;
+    }
+    cout<<"The Hexadecimal form of "<<S<<" is: "<<sum<<endl;
+    cin>>irrelivent;
+    choose();
 }
-void decToOct(long S){
-    long number=S;
+void decToOct(long int S){
+    long int number=S;
     int count=0;
     long sum=0;
     while (number>0)
@@ -99,10 +188,11 @@ void hexToDec(string S){
             count++;
         }
     cout<<"The Decimal number for "<<S<<" is: "<<sum<<endl;
+    cin>>irrelivent;
     choose();
 }
-void octToDec(long S){
-    long number = S;
+void octToDec(long int S){
+    long int  number = S;
     int count=0;
     int sum=0;
     while(number!=0){
@@ -112,10 +202,11 @@ void octToDec(long S){
     count++;
     }
     cout<<"The decimal form for "<<S<<" is: "<<sum<<"\n"<<endl;
+    cin>>irrelivent;
     choose();
 }
-void binToDec(long S){
-    long number = S;
+void binToDec(long int S){
+    long int number = S;
     int count=0;
     int sum=0;
     while(number!=0){
@@ -135,6 +226,7 @@ void binToDec(long S){
     count++;
     }
     cout<<"The decimal form for "<<S<<" is: "<<sum<<"\n"<<endl;
+    cin>>irrelivent;
     choose();
 }
 void pythagorianTriplet(int a,int b,int c){
@@ -154,12 +246,14 @@ void pythagorianTriplet(int a,int b,int c){
         std::cerr << e.what() << '\n';
     } 
     cout<<"\n";
+    cin>>irrelivent;
     choose();
 }
 
 void sumToN(int n){
     int sum=(n*(n+1))/2;
     cout<<"The final value: "<<sum<<endl;
+    cin>>irrelivent;
     choose();
 }
 string inputsString(){
@@ -231,6 +325,4 @@ void choose(){
     }
 }
 int main(){
-    // choose();
-    long x=inputLong();
-        decToOct(x);}
+    choose();}
